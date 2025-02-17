@@ -1,0 +1,197 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Swagger OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/bookings": {
+            "post": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Create a new booking",
+                "operationId": "0a2e7491d776c6a5af9518087ab96f0c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "resource_id": {
+                                        "description": "The ID of the resource",
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "description": "The type of the resource",
+                                        "type": "integer"
+                                    },
+                                    "start_time": {
+                                        "description": "The ",
+                                        "type": "string",
+                                        "example": "2025-02-17 07:14:49"
+                                    },
+                                    "end_time": {
+                                        "description": "The description of the resource",
+                                        "type": "string",
+                                        "example": "2025-02-19 07:14:49"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Booking created successfully"
+                    },
+                    "404": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/resources/{id}/bookings": {
+            "get": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Get all bookings for a resource",
+                "description": "Returns all bookings for a specific resource",
+                "operationId": "773c88618f956740737607d864a4a553",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bookings/{id}": {
+            "delete": {
+                "tags": [
+                    "Booking"
+                ],
+                "summary": "Delete a booking",
+                "description": "Deletes a booking by ID",
+                "operationId": "cab4f65d2acdf6c9d4663c896e25e6fe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Booking deleted successfully"
+                    },
+                    "404": {
+                        "description": "Booking not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/resources": {
+            "get": {
+                "tags": [
+                    "Resource"
+                ],
+                "summary": "Get all resources",
+                "operationId": "294d1e5b20e6e3d3dc037b148ded7962",
+                "responses": {
+                    "200": {
+                        "description": "List of resources"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Resource"
+                ],
+                "summary": "Create a new resource",
+                "operationId": "75316b49145b2d9ab78b6cc6f7ec76f6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "The name of the resource",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "The type of the resource",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "The description of the resource",
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Booking",
+            "description": "Booking"
+        },
+        {
+            "name": "Resource",
+            "description": "Resource"
+        }
+    ]
+}

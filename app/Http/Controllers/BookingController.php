@@ -18,7 +18,7 @@ class BookingController extends Controller
 
     public function store(StoreBookingRequest $request)
     {
-        $data = $request->toDto()->toArray();
+        $data = $request->toDto();
 
         return new BookingResource($this->bookingService->createBooking($data));
     }
